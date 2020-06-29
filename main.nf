@@ -643,7 +643,7 @@ process get_software_versions {
 }
 
 /**
- * Step - MultiQC 
+ * Step - MultiQC
  */
 process multiqc {
     publishDir "$outdir/multiqc", mode: "$mode"
