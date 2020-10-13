@@ -43,6 +43,9 @@ def helpMessage() {
       --skip_tracer                 Skip the TraCeR T cell receptor reconstruction step
       --skip_bracer                 Skip the BraCeR T cell receptor reconstruction step
 
+    TrAceR options:
+      --tracer_loci                 The loci to assemble. Needs to be a space-separated list of A, B, G, D. Defaults to `A B`.
+
     Other options:
       --outdir                      The output directory where the results will be saved
       --publish_dir_mode            Specify how files are put into `outdir`.
@@ -531,7 +534,7 @@ if (!params.skip_tracer) {
 
             script:
             """
-            tracer assemble -p ${task.cpus} -s ${species} \
+            tracer assemble --loci ${params.tracer_loci} -p ${task.cpus} -s ${species} \
             ${in_tracer.get(0)} ${in_tracer.get(1)} ${sample} .
             """
         }
